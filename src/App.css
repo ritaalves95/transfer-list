@@ -60,6 +60,17 @@
   right: 0;
 }
 
+.box-container-options {
+  overflow-y: scroll;
+  max-height: 100%;
+  scrollbar-width: none;
+}
+
+.box-container-options::-webkit-scrollbar {
+  display: none;
+}
+
+
 .box-container h1{
   position: absolute;
   top: 0;
@@ -71,4 +82,37 @@
 .fa-chevron-left{
   margin-bottom: 1rem;
   font-size: 20px;
+}
+
+input[type='checkbox']{
+  display: none;
+}
+
+.box-container label {
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.box-container label:hover {
+  background-color:#dfe6ec;
+  color: #BD632F;
+}
+
+.box-container .checked {
+  background-color: #dfe6ec;
+  color: #BD632F;
+}
+
+.box-container .disabled {
+  background-color: #dfe6ec;
+  color: #80858a;
+  cursor: default;
+}
+
+.box-container .disabled:hover {
+  background-color: #dfe6ec;
+  color: #80858a;
+  cursor: default;
 }
