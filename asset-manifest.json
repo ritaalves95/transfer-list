@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/transfer-list/static/css/main.955cd79e.css",
+    "main.js": "/transfer-list/static/js/main.79677007.js",
+    "index.html": "/transfer-list/index.html",
+    "main.955cd79e.css.map": "/transfer-list/static/css/main.955cd79e.css.map",
+    "main.79677007.js.map": "/transfer-list/static/js/main.79677007.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.955cd79e.css",
+    "static/js/main.79677007.js"
+  ]
+}
