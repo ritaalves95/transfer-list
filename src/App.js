@@ -78,15 +78,15 @@ const removeList = () => {
 
 //@   SET COLUMN LEFT TO RIGHT
   const allIn = () => {
+    let newList = [];
+    let newCheckboxes
     items.forEach(item => {
-      console.log(item.languages)
-      setListToDisplay([...listToDisplay, item.languages]);
-      setCheckBox({
-        ...checkBox,
-        [item.languages]: 'disabled'
+      newList.push(item.languages)
+      newCheckboxes = {...newCheckboxes, [item.languages]: 'disabled'}
     })
 
-    })
+    setListToDisplay(newList)
+    setCheckBox(newCheckboxes)
   }
 
   return (
