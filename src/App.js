@@ -48,20 +48,19 @@ const changeList = (e) => {
     .forEach(key => {
         checkBox[key] = checkBox[key] ? 'disabled' : null;
     })
-
+    setList([]);
   }
 
 //@   REMOVE FROM DISPLAY IN RIGHT COLUMN
 const removeList = () => {
-  let newList = list.filter(item => !item.includes(listToRemove));
-console.log('newList')
-console.log(newList)
+  let newList = listToDisplay.filter(item => !listToRemove.includes(item));
+
   Object.keys(checkBox)
   .forEach(key => {
       if(Number(key) && checkBox[key]){
           delete checkBox[key];
       }
-      if(key.includes(listToRemove)){
+      if(listToRemove.includes(key)){
         checkBox[key] = false;
       }
   })
@@ -71,20 +70,31 @@ console.log(newList)
   setListToRemove([])
 }
 
-// console.log('list')
-// console.log(list)
-// console.log('checkBox')
-// console.log(checkBox)
-// console.log('listtoremove')
-// console.log(listToRemove)
-// console.log('display')
-// console.log(listToDisplay)
+//@   CLEAR CONTENT FROM THE RIGHT COLUMN
+  const clear = () => {
+    setListToDisplay([]);
+    setCheckBox([]);
+  }
+
+//@   SET COLUMN LEFT TO RIGHT
+  const allIn = () => {
+    items.forEach(item => {
+      console.log(item.languages)
+      setListToDisplay([...listToDisplay, item.languages]);
+      setCheckBox({
+        ...checkBox,
+        [item.languages]: 'disabled'
+    })
+
+    })
+  }
+
   return (
     <div className="container">
             <div className="flex-wrapper">
                 <div className="box-container">
                   <div className="box-container-options">
-                    <h1>titulo</h1>
+                    <h1>Choices</h1>
                       {items.map((item, index) => { 
                         return(
                           <article key={index}>
@@ -106,13 +116,34 @@ console.log(newList)
                 </div>
 
                 <article className="column-wrapper">
-                    <i className="fas fa-chevron-right" onClick={() => displayList(list)}></i>
-                    <i className="fas fa-chevron-left" onClick={removeList}></i>
+                  <button 
+                      onClick={allIn}
+                      >
+                    <i className="fa-solid fa-angles-right"></i>
+                  </button>
+                  <button 
+                      onClick={() => displayList(list)}
+                      disabled={!list.length}
+                      >
+                    <i className="fas fa-chevron-right"></i>
+                  </button>
+                  <button 
+                      onClick={removeList}
+                      disabled={!listToRemove.length}
+                      >
+                    <i className="fas fa-chevron-left"></i>
+                  </button>
+                  <button 
+                      onClick={clear}
+                      disabled={!listToDisplay.length}
+                      >
+                    <i className="fa-solid fa-angles-left"></i>
+                  </button>
                 </article>
 
                 <div className="box-container">
                   <div className="box-container-options">
-                        <h1>titulo</h1>
+                        <h1>Choosen</h1>
                         {listToDisplay.map((item, index) => { 
                           return(
                             <article key={index}>
